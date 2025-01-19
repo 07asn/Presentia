@@ -99,10 +99,12 @@ onValue(starCountRef, (snapshot) => {
     formattedData = "<p>No data available.</p>";
   } else {
     // If data exists, create cards
-    Object.keys(data).forEach((userId) => {
-      const products = data[userId];
+     const productKeys = Object.keys(data); // Get all keys of the data
+     productKeys.slice(0, 8).forEach((userId) => {
+       // Limit to 8 cards
+       const products = data[userId];
 
-      formattedData += `
+       formattedData += `
         <div class="cardfetch" >
           <img src="${products.image}" alt="User Profile Picture" style="width:500px; height:200px; class="card-img";>
           <hr>
@@ -112,7 +114,7 @@ onValue(starCountRef, (snapshot) => {
           <p>Price: ${products.price}</p>
         </div>
       `;
-    });
+     });
   }
 
   // Display formatted data in the DOM
@@ -163,15 +165,6 @@ onValue(reviewsRef, (snapshot) => {
 
 
 
-
-
-
-
-
-
-
-
-
 // upward arrow hidden in top
 document.addEventListener("DOMContentLoaded", () => {
   const backToTopButton = document.querySelector(".back-to-top");
@@ -203,3 +196,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("offchat-menu").checked = true;
   }, 5000);
 });
+
+
+
+
+
+
+
+
+
+
